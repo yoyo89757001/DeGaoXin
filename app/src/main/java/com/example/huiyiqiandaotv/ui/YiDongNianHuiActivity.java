@@ -188,7 +188,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 								public void run() {
 
 									try {
-										Thread.sleep(15000);
+										Thread.sleep(20000);
 
 										Message message=Message.obtain();
 										message.what=110;
@@ -217,7 +217,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 								public void run() {
 
 									try {
-										Thread.sleep(15000);
+										Thread.sleep(20000);
 
 										Message message=Message.obtain();
 										message.what=999;
@@ -237,7 +237,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //								if (!fllowerAnimation.isRunings()){
 //									fllowerAnimation.startAnimation();
 //								}
-
 							mExplosionField.explode(bao);
 							//int z=tanchuangList.size();
 							int a=0;
@@ -255,7 +254,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 									public void run() {
 
 										try {
-											Thread.sleep(15000);
+											Thread.sleep(20000);
 
 											Message message=Message.obtain();
 											message.what=999;
@@ -274,7 +273,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 							break;
 
 					}
-
 
 
 				} catch (Exception e) {
@@ -301,7 +299,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 						//adapter.notifyDataSetChanged();
 						manager2.scrollToPosition(yuangongList.size() - 1);
 						//Log.d(TAG, "tanchuangList.size():" + tanchuangList.size());
-
 
 					}
 
@@ -687,6 +684,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
         return offlineResource;
     }
 
+
 	public  class MyAdapter extends BaseQuickAdapter<TanChuangBean,BaseViewHolder> {
 		private View view;
 		//	private List<TanChuangBean> d;
@@ -834,6 +832,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 		}
 
+
 		@Override
 		protected void convert(BaseViewHolder helper, TanChuangBean item) {
 			ViewAnimator
@@ -866,7 +865,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 						//员工
 
 						toprl.setBackgroundResource(R.drawable.gfgfgf);
-						tishi_tv.setText("员工\n"+item.getName());
+						tishi_tv.setText("员工\n" + item.getName());
 						//Log.d("SheZhiActivity", "名字0"+item.getName());
 
 						break;
@@ -891,22 +890,22 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 
 				}
-				if (item.getTouxiang()!=null){
+				if (item.getTouxiang() != null) {
 
 					Glide.with(MyApplication.getAppContext())
-							.load(baoCunBean.getTouxiangzhuji()+item.getTouxiang())
-						//	.transform(new GlideCircleTransform(MyApplication.getAppContext()))
+							.load(baoCunBean.getTouxiangzhuji() + item.getTouxiang())
+							.transform(new GlideRoundTransform(MyApplication.getAppContext(), 6))
+							//	.transform(new GlideCircleTransform(MyApplication.getAppContext()))
 							.into((ImageView) helper.getView(R.id.touxiang22));
-				}else {
-
+				} else{
 					Glide.with(MyApplication.getAppContext())
 							.load(item.getBytes())
 							//.transform(new GlideCircleTransform(MyApplication.getAppContext()))
 							.into((ImageView) helper.getView(R.id.touxiang22));
+
 				}
+
 			}
-
-
 
 
 		}
@@ -976,6 +975,12 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 				Log.d(TAG, "设备插入");
 				String usbPath = intent.getDataString();//（usb在手机上的路径）
 				try {
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							Glide.get(YiDongNianHuiActivity.this).clearDiskCache();
+						}
+					}).start();
 
 					Glide.with(MyApplication.getAppContext())
 							.load(usbPath.split("file:///")[1]+File.separator+"dgx.png")

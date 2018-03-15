@@ -21,9 +21,9 @@
     <application
         android:allowBackup="true"
         android:name=".MyApplication"
-        android:icon="@drawable/huiyi_logo"
+        android:icon="@drawable/logo333"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/huiyi_logo"
+        android:roundIcon="@drawable/logo333"
         android:supportsRtl="true"
         android:theme="@style/NotitleTheme">
         <activity android:name=".ui.YiDongNianHuiActivity"
