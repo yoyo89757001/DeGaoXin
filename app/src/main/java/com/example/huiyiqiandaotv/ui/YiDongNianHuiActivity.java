@@ -866,7 +866,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 						//员工
 
 						toprl.setBackgroundResource(R.drawable.gfgfgf);
-						tishi_tv.setText(item.getName());
+						tishi_tv.setText("员工\n"+item.getName());
 						//Log.d("SheZhiActivity", "名字0"+item.getName());
 
 						break;
@@ -895,13 +895,13 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 					Glide.with(MyApplication.getAppContext())
 							.load(baoCunBean.getTouxiangzhuji()+item.getTouxiang())
-							.transform(new GlideCircleTransform(MyApplication.getAppContext()))
+						//	.transform(new GlideCircleTransform(MyApplication.getAppContext()))
 							.into((ImageView) helper.getView(R.id.touxiang22));
 				}else {
 
 					Glide.with(MyApplication.getAppContext())
 							.load(item.getBytes())
-							.transform(new GlideCircleTransform(MyApplication.getAppContext()))
+							//.transform(new GlideCircleTransform(MyApplication.getAppContext()))
 							.into((ImageView) helper.getView(R.id.touxiang22));
 				}
 			}
